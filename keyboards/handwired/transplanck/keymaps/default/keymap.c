@@ -20,8 +20,6 @@ enum keyboard_layers {
 };
 
 
-#define FF LALT(KC_F4)
-
 enum custom_keycodes {
 
     ALTTAB= SAFE_RANGE,
