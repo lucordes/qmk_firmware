@@ -27,7 +27,7 @@ DEBOUNCE_TYPE?= sym_g
 ifneq ($(strip $(DEBOUNCE_TYPE)), custom)d
     QUANTUM_SRC += $(DEBOUNCE_DIR)/$(strip $(DEBOUNCE_TYPE)).c
 endif
-AUDIO_ENABLE = no
+AUDIO_ENABLE = yes
 BLUETOOTH = no
 NKRO_ENABLE=yes
 
