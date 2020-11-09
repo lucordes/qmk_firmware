@@ -140,8 +140,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 [_ARROW] = LAYOUT_ortho_4x12(
-  _______, _______, _______, _______, _______, MU_MOD, MU_TOG, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, NK_TOGG, _______, _______,
+  _______, _______, _______, RGB_MOD, RGB_TOG, MU_MOD, MU_TOG, _______, _______, _______, _______, _______,
+  _______, _______, _______, RGB_HUI, RGB_VAI, _______, _______, _______, _______, NK_TOGG, _______, _______,
   _______, _______, _______, _______, _______, _______, _______, TG(_UMLAUT), KC_MEDIA_PREV_TRACK, KC_UP, KC_MEDIA_NEXT_TRACK, TG(_GAME),
   _______, _______, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT, _______
 ),
@@ -187,7 +187,7 @@ void persistent_default_layer_set(uint16_t default_layer) {
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-
+rgblight_setrgb_at(43, 44, 44, 4);
     switch(keycode) {
 
         case ALTTAB:

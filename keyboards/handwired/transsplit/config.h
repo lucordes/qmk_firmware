@@ -35,10 +35,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_ROW_PINS { B2, B3, B1, F7 }
 #define MATRIX_COL_PINS { B5, B4, E6, D7, C6, D4 }
 
-#define RGB_DI_PIN B2
-#define RGBLED_NUM 12    // Number of LEDs (each hand)
-#define RGBLED_SPLIT { 6, 6 }
+#define RGB_DI_PIN D2
+#define RGBLED_NUM 24    // Number of LEDs (each hand)
+#define RGBLED_SPLIT { 12, 12 }
 #define RGBLIGHT_ANIMATIONS
+//#define RGBLIGHT_EFFECT_RAINBOW_MOOD
 
 /* Split Defines */
 #define SPLIT_HAND_PIN B6
