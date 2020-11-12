@@ -25,6 +25,7 @@ enum custom_keycodes {
 
     ALTTAB= SAFE_RANGE,
     TABCYCLE,
+    
 
 };
 
@@ -148,7 +149,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_ARROW] = LAYOUT_ortho_4x12(
   _______, _______, _______, _______, _______, MU_MOD, MU_TOG, _______, _______, _______, _______, _______,
   _______, _______, _______, _______, _______, _______, _______, _______, _______, NK_TOGG, _______, _______,
-  _______, _______, _______, _______, _______, _______, _______, TG(_UMLAUT), KC_MEDIA_PREV_TRACK, KC_UP, KC_MEDIA_NEXT_TRACK, TG(_GAME),
+  _______, UC_M_LN, _______, _______, _______, _______, _______, TG(_UMLAUT), KC_MEDIA_PREV_TRACK, KC_UP, KC_MEDIA_NEXT_TRACK, TG(_GAME),
   _______, _______, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT, _______
 ),
 
