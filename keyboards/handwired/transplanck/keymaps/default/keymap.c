@@ -25,7 +25,10 @@ enum custom_keycodes {
 
     ALTTAB= SAFE_RANGE,
     TABCYCLE,
-    
+    MEM,
+
+
+
 
 };
 
@@ -51,11 +54,23 @@ enum {
     U_UMLAUT,
     O_UMLAUT,
     TD_ESC_CAPS,
-    SOME_OTHER_DANCE
+    SOME_OTHER_DANCE,
 };
+const qk_ucis_symbol_t ucis_symbol_table[] = UCIS_TABLE(
+    UCIS_SYM("poop", 0x1F4A9),                // 💩
+    UCIS_SYM("rofl", 0x1F923),                // 🤣
+    UCIS_SYM("cuba", 0x1F1E8, 0x1F1FA),       // 🇨🇺
+    UCIS_SYM("look", 0x0CA0, 0x005F, 0x0CA0), // ಠ_ಠ
+    UCIS_SYM("fire",0x1F525), //🔥
+  UCIS_SYM("table",0x0028, 0x0256f, 0x00b0, 0x25a1, 0x00b0, 0xff09, 0x256f, 0xfe35, 0x0020, 0x253b, 0x2501, 0x253b),///(╯°□°）╯︵ ┻━┻
+    UCIS_SYM("peace",0x262E),
+   UCIS_SYM("chess",0x265A),//chessking
+  UCIS_SYM("face",0x0028,0x0020,0x00361,0x00b0,0x0020,0x0035c,0x00296,0x0020,0x00361,0x00b0,0x0029), //( ͡° ͜ʖ ͡°)
+  UCIS_SYM("shrug",0x00af,0x005c,0x005f,0x0028,0x0030c4,0x0029,0x005f,0x002f,0x00af), //¯\_(ツ)_/¯
+   UCIS_SYM("rifle",0x2584,0xfe3b,0x337,0x33f,0x253b,0x33f,0x2550,0x2501,0x4e00),  //rifle
 
-void a_finished(qk_tap_dance_state_t *state, void *user_data);
-void a_reset(qk_tap_dance_state_t *state, void *user_data);
+);
+
 
 uint8_t cur_dance(qk_tap_dance_state_t *state);
 
@@ -85,7 +100,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 [_QWERTY] = LAYOUT_ortho_4x12(
-  KC_GRAVE,  KC_Q,       KC_W,       KC_E,       KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,    KC_O,    KC_P,    KC_BSPC,
+  KC_ESC,  KC_Q,       KC_W,       KC_E,       KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,    KC_O,    KC_P,    KC_BSPC,
   KC_TAB, KC_A,       KC_S,       KC_D,       KC_F,   KC_G,   KC_H,   KC_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT,
   KC_LSFT, KC_Z,       KC_X,       KC_C,       KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_ENT),
   KC_LCTL, KC_LGUI,    KC_RALT,    KC_LALT,    MO(_LOWER),  KC_SPC, KC_SPC, MO(_RAISE),  KC_RCTL, KC_RGUI, KC_LALT,   MO(_ARROW)
@@ -113,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_LOWER] = LAYOUT_ortho_4x12(
   RESET, _______,  KC_WBAK,  KC_UP,  KC_WFWD,  TG(_AMONGUS),  _______,  KC_BTN1,  KC_MS_U,  KC_BTN2,    _______,  _______,
-  ALTTAB, TABCYCLE,  KC_LEFT,  KC_DOWN,  KC_RIGHT,  KC_ENT , _______,  KC_MS_L,  KC_MS_D,  KC_MS_R,    _______,  _______,
+  ALTTAB, TABCYCLE,  KC_LEFT,  KC_DOWN,  KC_RIGHT,  KC_ENT , MEM,  KC_MS_L,  KC_MS_D,  KC_MS_R,    _______,  _______,
   _______, _______, _______,  KC_LBRC,  KC_BSPC,  _______,  KC_VOLD,  KC_VOLU,  KC_RBRC,  _______,      _______,  _______,
   _______, _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  KC_PWR
 ),
@@ -148,8 +163,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_ARROW] = LAYOUT_ortho_4x12(
   _______, _______, _______, _______, _______, MU_MOD, MU_TOG, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, NK_TOGG, _______, _______,
-  _______, UC_M_LN, _______, _______, _______, _______, _______, TG(_UMLAUT), KC_MEDIA_PREV_TRACK, KC_UP, KC_MEDIA_NEXT_TRACK, TG(_GAME),
+  _______, UC_MOD, _______, _______, _______, _______, _______, _______, _______, NK_TOGG, _______, _______,
+  _______, _______, _______, _______, _______, _______, _______, TG(_UMLAUT), KC_MEDIA_PREV_TRACK, KC_UP, KC_MEDIA_NEXT_TRACK, TG(_GAME),
   _______, _______, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT, _______
 ),
 
@@ -187,7 +202,10 @@ KC_TAB,  KC_Q,       KC_W,       KC_E,       KC_R,   KC_T,   KC_Y,   KC_U,   KC_
 void persistent_default_layer_set(uint16_t default_layer) {
   eeconfig_update_default_layer(default_layer);
   default_layer_set(default_layer);
+
 }
+
+
 
 
 
@@ -199,9 +217,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case ALTTAB:
           if (record->event.pressed) {
+
+
             SEND_STRING(SS_DOWN(X_LALT)SS_TAP(X_TAB));
           }
           else{SEND_STRING(SS_UP(X_LALT));}
+
+            
+
             break;
         case TABCYCLE:
             if (record->event.pressed) {
@@ -210,29 +233,34 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }else{
 
                 SEND_STRING(SS_UP(X_RCTL));
+
+
             }
 
             break;
+        case MEM:
+        if (record->event.pressed) {
 
+            }else{qk_ucis_start();
+            }
+           
 
-}
+            break;
 
+    }
 return true;
 }
 
 
+
+
 void matrix_init_user(void) {
 //enmpty
+
 }
-void encoder_update_user(uint8_t index, bool clockwise) {
-    if (index == 0) { /* First encoder */
-        if (clockwise) {
-            tap_code(KC_DOWN);
-        } else {
-            tap_code(KC_UP);
-        }
-    }
-}
+
+
+
 
 
 uint8_t cur_dance(qk_tap_dance_state_t *state) {
@@ -240,7 +268,6 @@ uint8_t cur_dance(qk_tap_dance_state_t *state) {
         if (state->interrupted || !state->pressed) return SINGLE_TAP;
         // Key has not been interrupted, but the key is still held. Means you want to send a 'HOLD'.
         else return SINGLE_HOLD;
-
 
 
     }
@@ -280,10 +307,12 @@ static tap atap_state = {
 void a_finished(qk_tap_dance_state_t *state, void *user_data) {
     atap_state.state = cur_dance(state);
     switch (atap_state.state) {
+
         case SINGLE_TAP: register_code(KC_A); break;
         case SINGLE_HOLD:
-        register_code(KC_RALT);
+            register_code(KC_RALT);
         register_code(KC_Q);
+
         break;
 
         //case DOUBLE_HOLD: register_code(KC_LALT); break;
@@ -421,7 +450,8 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [A_UMLAUT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, a_finished, a_reset),
     [U_UMLAUT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, u_finished, u_reset),
     [O_UMLAUT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, o_finished, o_reset),
-    [S_UMLAUT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, s_finished, s_reset)
+    [S_UMLAUT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, s_finished, s_reset),
+
 };
 
 
