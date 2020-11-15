@@ -127,7 +127,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_ortho_4x12(
-  RESET, _______,  KC_WBAK,  KC_UP,  KC_WFWD,  TG(_AMONGUS),  _______,  KC_BTN1,  KC_MS_U,  KC_BTN2,    _______,  _______,
+  RESET, _______,  KC_WBAK,  KC_UP,  KC_WFWD,  TG(_AMONGUS),  _______,  KC_BTN1,  KC_MS_U,  KC_BTN2,    _______,  KC_DEL,
   ALTTAB, TABCYCLE,  KC_LEFT,  KC_DOWN,  KC_RIGHT,  KC_ENT , MEM,  KC_MS_L,  KC_MS_D,  KC_MS_R,    _______,  _______,
   _______, _______, _______,  KC_LBRC,  KC_BSPC,  _______,  KC_VOLD,  KC_VOLU,  KC_RBRC,  _______,      _______,  _______,
   _______, _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  KC_PWR
