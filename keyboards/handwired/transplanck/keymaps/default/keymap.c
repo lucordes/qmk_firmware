@@ -54,7 +54,7 @@ enum {
     U_UMLAUT,
     O_UMLAUT,
     TD_ESC_CAPS,
-    SOME_OTHER_DANCE,
+    ESC_GRAVE,
 };
 const qk_ucis_symbol_t ucis_symbol_table[] = UCIS_TABLE(
     UCIS_SYM("poop", 0x1F4A9),                // 💩
@@ -100,7 +100,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 [_QWERTY] = LAYOUT_ortho_4x12(
-  KC_GRAVE,  KC_Q,       KC_W,       KC_E,       KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,    KC_O,    KC_P,    KC_BSPC,
+  TD(ESC_GRAVE),  KC_Q,       KC_W,       KC_E,       KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,    KC_O,    KC_P,    KC_BSPC,
   KC_TAB, KC_A,       KC_S,       KC_D,       KC_F,   KC_G,   KC_H,   KC_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT,
   KC_LSFT, KC_Z,       KC_X,       KC_C,       KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_ENT),
   KC_LCTL, KC_LGUI,    KC_RALT,    KC_LALT,    MO(_LOWER),  KC_SPC, KC_SPC, MO(_RAISE),  KC_RCTL, KC_RGUI, KC_LALT,   MO(_ARROW)
@@ -446,11 +446,47 @@ void o_reset(qk_tap_dance_state_t *state, void *user_data) {
     otap_state.state = 0;
 }
 
+static tap esctap_state = {
+    .is_press_action = true,
+    .state = 0
+};
+
+void esc_finished(qk_tap_dance_state_t *state, void *user_data) {
+    esctap_state.state = cur_dance(state);
+    switch (esctap_state.state) {
+        case SINGLE_TAP: register_code(KC_ESC); break;
+        case SINGLE_HOLD:
+        register_code(KC_GRAVE);
+        break;
+       // case DOUBLE_TAP: register_code(KC_ESC); break;
+        //case DOUBLE_HOLD: register_code(KC_LALT); break;
+        // Last case is for fast typing. Assuming your key is `f`:
+        // For example, when typing the word `buffer`, and you want to make sure that you send `ff` and not `Esc`.
+        // In order to type `ff` when typing fast, the next character will have to be hit within the `TAPPING_TERM`, which by default is 200ms.
+        //case DOUBLE_SINGLE_TAP: tap_code(KC_O); register_code(KC_O); break;
+    }
+}
+
+void esc_reset(qk_tap_dance_state_t *state, void *user_data) {
+    switch (esctap_state.state) {
+        case SINGLE_TAP: unregister_code(KC_ESC); break;
+        case SINGLE_HOLD:
+            unregister_code(KC_GRAVE);
+            break;
+       // case DOUBLE_TAP: unregister_code(KC_ESC); break;
+        //case DOUBLE_HOLD: unregister_code(KC_LALT);
+       //case DOUBLE_SINGLE_TAP: unregister_code(KC_ESC);
+    }
+    esctap_state.state = 0;
+}
+
+
 qk_tap_dance_action_t tap_dance_actions[] = {
     [A_UMLAUT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, a_finished, a_reset),
     [U_UMLAUT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, u_finished, u_reset),
     [O_UMLAUT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, o_finished, o_reset),
     [S_UMLAUT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, s_finished, s_reset),
+    [ESC_GRAVE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, esc_finished, esc_reset),
 
 };
 
