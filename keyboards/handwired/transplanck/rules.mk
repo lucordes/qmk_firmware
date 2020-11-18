@@ -14,12 +14,10 @@ ENCODER_ENABLE = no
 EXTRAKEY_ENABLE = yes      # Audio control and System control
 
 
-EXTRAKEY_ENABLE = yes
-    MOUSEKEY_ENABLE=yes
+MOUSEKEY_ENABLE=yes
 TAP_DANCE_ENABLE = yes
 CONSOLE_ENABLE=no
 
-#EXTRAFLAGS += -flto
 
 DEBOUNCE_DIR:= $(QUANTUM_DIR)/debounce
 #DEBOUNCE_TYPE?= sym_defer_g
@@ -33,3 +31,5 @@ NKRO_ENABLE=yes
 //UNICODE_ENABLE = yes
 //UNICODEMAP_ENABLE = yes
 UCIS_ENABLE = yes
+
+EXTRAFLAGS += -flto

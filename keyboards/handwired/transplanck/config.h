@@ -31,7 +31,7 @@
 //clrearcase
 #define MATRIX_COL_PINS { C6,E6,B4,B5,D3,B2,B3,B1,F7,F6,F5,F4 }
 #define MATRIX_ROW_PINS { D7,D1,D2,D0}
-
+#define NKRO_ENABLE
 #define B6_AUDIO
 
 #ifdef AUDIO_ENABLE
@@ -49,6 +49,13 @@
 #define PERMISSIVE_HOLD
 
 #define UCIS_MAX_CODE_POINTS 15
+
+    #ifndef NO_DEBUG
+    #define NO_DEBUG
+    #endif // !NO_DEBUG
+    #if !defined(NO_PRINT) && !defined(CONSOLE_ENABLE)
+    #define NO_PRINT
+    #endif // !NO_PRINT
 
 
 

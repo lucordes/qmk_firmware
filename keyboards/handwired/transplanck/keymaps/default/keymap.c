@@ -62,12 +62,14 @@ const qk_ucis_symbol_t ucis_symbol_table[] = UCIS_TABLE(
     UCIS_SYM("cuba", 0x1F1E8, 0x1F1FA),       // 🇨🇺
     UCIS_SYM("look", 0x0CA0, 0x005F, 0x0CA0), // ಠ_ಠ
     UCIS_SYM("fire",0x1F525), //🔥
-  UCIS_SYM("table",0x0028, 0x0256f, 0x00b0, 0x25a1, 0x00b0, 0xff09, 0x256f, 0xfe35, 0x0020, 0x253b, 0x2501, 0x253b),///(╯°□°）╯︵ ┻━┻
+    UCIS_SYM("table",0x0028, 0x0256f, 0x00b0, 0x25a1, 0x00b0, 0xff09, 0x256f, 0xfe35, 0x0020, 0x253b, 0x2501, 0x253b),///(╯°□°）╯︵ ┻━┻
     UCIS_SYM("peace",0x262E),
-   UCIS_SYM("chess",0x265A),//chessking
-  UCIS_SYM("face",0x0028,0x0020,0x00361,0x00b0,0x0020,0x0035c,0x00296,0x0020,0x00361,0x00b0,0x0029), //( ͡° ͜ʖ ͡°)
-  UCIS_SYM("shrug",0x00af,0x005c,0x005f,0x0028,0x0030c4,0x0029,0x005f,0x002f,0x00af), //¯\_(ツ)_/¯
-   UCIS_SYM("rifle",0x2584,0xfe3b,0x337,0x33f,0x253b,0x33f,0x2550,0x2501,0x4e00),  //rifle
+    UCIS_SYM("chess",0x265A),//chessking
+    UCIS_SYM("face",0x0028,0x0020,0x00361,0x00b0,0x0020,0x0035c,0x00296,0x0020,0x00361,0x00b0,0x0029), //( ͡° ͜ʖ ͡°)
+    UCIS_SYM("shrug",0x00af,0x005c,0x005f,0x0028,0x0030c4,0x0029,0x005f,0x002f,0x00af), //¯\_(ツ)_/¯
+    UCIS_SYM("rifle",0x2584,0xfe3b,0x337,0x33f,0x253b,0x33f,0x2550,0x2501,0x4e00),  //rifle
+     UCIS_SYM("vomit",0x1F92E),
+
 
 );
 
@@ -164,7 +166,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_ARROW] = LAYOUT_ortho_4x12(
   _______, _______, _______, _______, _______, MU_MOD, MU_TOG, _______, _______, _______, _______, _______,
   _______, UC_MOD, _______, _______, _______, _______, _______, _______, _______, NK_TOGG, _______, _______,
-  _______, _______, _______, _______, _______, _______, _______, TG(_UMLAUT), KC_MEDIA_PREV_TRACK, KC_UP, KC_MEDIA_NEXT_TRACK, TG(_GAME),
+  _______, NK_TOGG, _______, _______, _______, _______, _______, TG(_UMLAUT), KC_MEDIA_PREV_TRACK, KC_UP, KC_MEDIA_NEXT_TRACK, TG(_GAME),
   _______, _______, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT, _______
 ),
 
@@ -223,7 +225,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           }
           else{SEND_STRING(SS_UP(X_LALT));}
 
-            
+
 
             break;
         case TABCYCLE:
@@ -243,7 +245,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
             }else{qk_ucis_start();
             }
-           
+
 
             break;
 
