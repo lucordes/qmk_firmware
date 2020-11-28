@@ -43,7 +43,7 @@ extern qk_ucis_state_t qk_ucis_state;
 
 #define UCIS_TABLE(...) \
     {                   \
-        __VA_ARGS__,    \
+        __VA_ARGS__    \
         { NULL, {} }    \
     }
 #define UCIS_SYM(name, ...) \

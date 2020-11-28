@@ -55,7 +55,8 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
-
+#define UNICODE_SELECTED_MODES UC_LNX, UC_WINC
+#define UCIS_MAX_CODE_POINTS 15
 /* RGB Underglow
  * F6 PIN for XD60v3 that has pre-soldered LEDs
  */
@@ -66,7 +67,15 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_SAT_STEP 17
 #define RGBLIGHT_VAL_STEP 17
 
-/* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
-#define LOCKING_SUPPORT_ENABLE
-/* Locking resynchronize hack */
-#define LOCKING_RESYNC_ENABLE
+#define RGBLIGHT_LAYERS
+
+//#define TAPPING_TERM 175
+
+#define PERMISSIVE_HOLD
+#ifndef NO_DEBUG
+    #define NO_DEBUG
+    #endif // !NO_DEBUG
+    #if !defined(NO_PRINT) && !defined(CONSOLE_ENABLE)
+    #define NO_PRINT
+    #endif // !NO_PRINT
+
