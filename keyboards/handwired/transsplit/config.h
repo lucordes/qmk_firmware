@@ -32,6 +32,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DIODE_DIRECTION COL2ROW
 #define MATRIX_ROWS 8
 #define MATRIX_COLS 6
+<<<<<<< HEAD
 //left:
 #define MATRIX_ROW_PINS { D7, E6, B4, B5 }
 #define MATRIX_COL_PINS { B2, B3, B1, F5, F6, F7 }
@@ -43,6 +44,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGB_DI_PIN D1
 #define RGBLED_NUM 20    // Number of LEDs (each hand)
 #define RGBLED_SPLIT { 10, 10 }
+=======
+#define MATRIX_ROW_PINS { B2, B3, B1, F7 }
+#define MATRIX_COL_PINS { B5, B4, E6, D7, C6, D4 }
+
+#define RGB_DI_PIN D2
+#define RGBLED_NUM 24    // Number of LEDs (each hand)
+#define RGBLED_SPLIT { 12, 12 }
+>>>>>>> 5e31a52667ff28b5f44d9f8b311e89fa3cb25787
 #define RGBLIGHT_ANIMATIONS
 //#define RGBLIGHT_EFFECT_RAINBOW_MOOD
 
@@ -52,6 +61,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define USE_SERIAL
 
+<<<<<<< HEAD
 //#define UNICODE_SONG_LNX  UNICODE_LINUX
 #define PERMISSIVE_HOLD
 #define UNICODE_SELECTED_MODES UC_LNX, UC_WINC
@@ -68,3 +78,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #if !defined(NO_PRINT) && !defined(CONSOLE_ENABLE)
     #define NO_PRINT
     #endif // !NO_PRINT
+=======
+/* Set 0 if debouncing isn't needed */
+#define DEBOUNCE 5
+>>>>>>> 5e31a52667ff28b5f44d9f8b311e89fa3cb25787
