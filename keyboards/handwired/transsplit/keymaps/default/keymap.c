@@ -26,26 +26,12 @@ enum custom_keycodes {
     ALTTAB= SAFE_RANGE,
     TABCYCLE,
     MEM,
-    RANDUNI,
 
 
 
 };
 
-typedef struct {
-    bool is_press_action;
-    uint8_t state;
-} tap;
 
-enum {
-    SINGLE_TAP = 1,
-    SINGLE_HOLD,
-    DOUBLE_TAP,
-    DOUBLE_HOLD,
-    DOUBLE_SINGLE_TAP, // Send two single taps
-    TRIPLE_TAP,
-    TRIPLE_HOLD
-};
 
 // Tap dance enums
 enum {
@@ -53,10 +39,8 @@ enum {
     S_UMLAUT,
     U_UMLAUT,
     O_UMLAUT,
-    TD_ESC_CAPS,
     ESC_GRAVE,
-    CT_EGG,
-    A_UMLAUT_FN,
+
 };
 const qk_ucis_symbol_t ucis_symbol_table[] = UCIS_TABLE(
     UCIS_SYM("poop", 0x1F4A9),                // 💩a
@@ -126,9 +110,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_ortho_4x12(
-  RESET, _______,  KC_WBAK,  KC_UP,  KC_WFWD,  TG(_AMONGUS),  _______,  KC_BTN1,  KC_MS_U,  KC_BTN2,    RANDUNI,  KC_DEL,
+  RESET, _______,  KC_WBAK,  KC_UP,  KC_WFWD,  TG(_AMONGUS),  _______,  KC_BTN1,  KC_MS_U,  KC_BTN2,    _______,  KC_DEL,
   ALTTAB, TABCYCLE,  KC_LEFT,  KC_DOWN,  KC_RIGHT,  KC_ENT , MEM,  KC_MS_L,  KC_MS_D,  KC_MS_R,    _______,  _______,
-  _______, TD(A_UMLAUT_FN), _______,  KC_LBRC,  KC_BSPC,  _______,  KC_VOLD,  KC_VOLU,  KC_RBRC,  _______,      _______,  _______,
+  _______, _______, _______,  KC_LBRC,  KC_BSPC,  _______,  KC_VOLD,  KC_VOLU,  KC_RBRC,  _______,      _______,  _______,
   _______, _______,  _______,  _______,  _______,  KC_F13,  _______,  _______,  _______,  _______,    _______,  KC_PWR
 ),
 
@@ -282,6 +266,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
             }
 
+            break;
+        case MEM:
+              if (record->event.pressed) {
+
+            }else{qk_ucis_start();
+            }
             break;
 
 

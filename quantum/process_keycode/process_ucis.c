@@ -148,7 +148,6 @@ break;
 
 /*
      int hexadecimal_number, remainder, count = 0;
-
       for(count = 0; a > 0; count++)
       {
             remainder = a % 16;
