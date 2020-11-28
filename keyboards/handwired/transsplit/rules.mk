@@ -16,11 +16,7 @@ BOOTLOADER = caterina
 #   the appropriate keymap folder that will get included automatically
 #
 BOOTMAGIC_ENABLE = no       # Virtual DIP switch configuration
-<<<<<<< HEAD
 MOUSEKEY_ENABLE = yes       # Mouse keys
-=======
-MOUSEKEY_ENABLE = no       # Mouse keys
->>>>>>> 5e31a52667ff28b5f44d9f8b311e89fa3cb25787
 EXTRAKEY_ENABLE = yes       # Audio control and System control
 CONSOLE_ENABLE = no         # Console for debug
 COMMAND_ENABLE = no        # Commands for debug and configuration
@@ -29,7 +25,6 @@ BACKLIGHT_ENABLE = no      # Enable keyboard backlight functionality
 MIDI_ENABLE = no            # MIDI controls
 AUDIO_ENABLE = no           # Audio output on port C6
 UNICODE_ENABLE = no         # Unicode
-<<<<<<< HEAD
 RGBLIGHT_ENABLE = yes        # Enable WS2812 RGB underlight.
 API_SYSEX_ENABLE = no
 SPLIT_KEYBOARD = yes
@@ -39,18 +34,4 @@ SLEEP_LED_ENABLE = no    # Breathing sleep LED during USB suspend
 UCIS_ENABLE = yes
 LAYOUTS = ortho_4x12
 EXTRAFLAGS += -flto
-=======
-BLUETOOTH_ENABLE = yes      # Enable Bluetooth with the Adafruit EZ-Key HID
-RGBLIGHT_ENABLE = yes        # Enable WS2812 RGB underlight.
-API_SYSEX_ENABLE = no
-
-Bluetooth=RN42
-SPLIT_KEYBOARD = yes
-TAP_DANCE_ENABLE = yes
-
-# Do not enable SLEEP_LED_ENABLE. it uses the same timer as BACKLIGHT_ENABLE
-SLEEP_LED_ENABLE = no    # Breathing sleep LED during USB suspend
-OLED_DRIVER_ENABLE = yes
-LAYOUTS = ortho_4x12
->>>>>>> 5e31a52667ff28b5f44d9f8b311e89fa3cb25787
 

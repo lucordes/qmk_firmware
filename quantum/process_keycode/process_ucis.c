@@ -15,7 +15,7 @@
  */
 
 #include "process_ucis.h"
-#include "time.h"
+
 qk_ucis_state_t qk_ucis_state;
 
 void qk_ucis_start(void) {

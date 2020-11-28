@@ -30,7 +30,6 @@ enum custom_keycodes {
 
 
 
-
 };
 
 typedef struct {
@@ -284,40 +283,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
 
             break;
-        case MEM:
-        if (record->event.pressed) {
-
-            }else{qk_ucis_start();
-            }
 
 
-            break;
-        case RANDUNI:
-            //1F600-1F6C5
-            // decunalL 128512 bis 128709
-           //printf("Hello ");
-            if (record->event.pressed) {
-    goto Cleanup;
-Cleanup: ; //This is an empty statement.
-int a=rand()%197+128512;
-
-
-     int hexadecimal_number, remainder, count = 0;
-      for(count = 0; a > 0; count++)
-      {
-            remainder = a % 16;
-            hexadecimal_number = hexadecimal_number + remainder * pow(10, count);
-            a = a / 16;
-      }
-
-
-   const char *str = (char*)a;
-    //printf("%s\n", str);
-
-    if(str==0){}
-            send_unicode_hex_string(str);
-            }
-            break;
 
     }
 return true;
