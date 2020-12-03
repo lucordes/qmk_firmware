@@ -34,8 +34,6 @@ enum custom_keycodes {
 
 };
 
-
-
 // Tap dance enums
 enum {
     A_UMLAUT,
@@ -151,6 +149,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case MEM:
         if (record->event.pressed) {
 
+            //rand ist nicht 100% random
+
+//bei lshift
+//int a=rand()%447+9728;
+
+//27BF-2600
+//10175-9728
+//dif=44
             }else{qk_ucis_start();
             }
 

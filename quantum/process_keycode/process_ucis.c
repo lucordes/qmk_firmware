@@ -146,15 +146,6 @@ break;
 
                     int a=rand()%447+9728;
 
-/*
-     int hexadecimal_number, remainder, count = 0;
-      for(count = 0; a > 0; count++)
-      {
-            remainder = a % 16;
-            hexadecimal_number = hexadecimal_number + remainder * pow(10, count);
-            a = a / 16;
-      }
-*/
 //27BF-2600
 //10175-9728
 //dif=447

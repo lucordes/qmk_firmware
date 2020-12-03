@@ -16,6 +16,7 @@ enum keyboard_layers {
   _LOWER,
   _RAISE,
   _ARROW,
+  _AUDIO,
   _GAME,
   // Function Layer
 };
@@ -54,7 +55,8 @@ const qk_ucis_symbol_t ucis_symbol_table[] = UCIS_TABLE(
     UCIS_SYM("face",0x0028,0x0020,0x00361,0x00b0,0x0020,0x0035c,0x00296,0x0020,0x00361,0x00b0,0x0029), //( ͡° ͜ʖ ͡°)
     UCIS_SYM("shrug",0x00af,0x005c,0x005f,0x0028,0x0030c4,0x0029,0x005f,0x002f,0x00af), //¯\_(ツ)_/¯
     UCIS_SYM("rifle",0x2584,0xfe3b,0x337,0x33f,0x253b,0x33f,0x2550,0x2501,0x4e00),  //rifle
-     UCIS_SYM("vomit",0x1F92E),
+    UCIS_SYM("vomit",0x1F92E),
+    UCIS_SYM("bot",0x1F916),
 
 
 );
@@ -84,17 +86,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_QWERTY] = LAYOUT_ortho_4x12(
   TD(ESC_GRAVE),  KC_Q,       KC_W,       KC_E,       KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,    KC_O,    KC_P,    KC_BSPC,
-  KC_TAB, KC_A,       KC_S,       KC_D,       KC_F,   KC_G,   KC_H,   KC_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+  KC_TAB, KC_A,       KC_S,       KC_D,       KC_F,   KC_G,   KC_H,   KC_J,   KC_K,    KC_L,    LT(_ARROW, KC_SCLN), KC_QUOT,
   KC_LSFT, KC_Z,       KC_X,       KC_C,       KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_ENT),
-  KC_LCTL, KC_LGUI,    KC_RALT,    KC_LALT,    MO(_LOWER),  KC_SPC, KC_SPC, MO(_RAISE),  KC_RCTL, KC_RGUI, MO(_ARROW), KC_RCTL
+  KC_LCTL, KC_LGUI,    KC_RALT,    KC_LALT,    MO(_LOWER),  LT(_AUDIO, KC_SPC), KC_SPC, MO(_RAISE),  KC_RCTL, KC_RGUI, MO(_ARROW), KC_RCTL
 ),
 
 
 [_AMONGUS] = LAYOUT_ortho_4x12(
-  KC_ESC,  KC_Q,       KC_W,       KC_E,       KC_R,   TG(_AMONGUS),   KC_Y,   KC_U,   KC_I,    KC_O,    KC_P,    KC_BSPC,
-  KC_TAB, KC_A,       KC_S,       KC_D,       KC_F13,   KC_G,   KC_H,   KC_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-  KC_ESC, KC_Z,       KC_X,       KC_C,       KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_ENT),
-  KC_LCTL, KC_LGUI,    KC_RALT,    KC_LALT,    KC_SPC,  KC_SPC, KC_SPC, MO(_RAISE),  KC_RCTL, KC_RGUI, MO(_ARROW),KC_RCTL
+  _______, _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,
+  _______, _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,
+  KC_ESC, _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,
+  _______, _______,  _______,  TG(_AMONGUS),  KC_SPC,  MO(_LOWER),  _______,  _______,  _______,  _______,    _______,  _______
 ),
 
 
@@ -110,15 +112,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_ortho_4x12(
-  RESET, _______,  KC_WBAK,  KC_UP,  KC_WFWD,  TG(_AMONGUS),  _______,  KC_BTN1,  KC_MS_U,  KC_BTN2,    _______,  KC_DEL,
+  RESET, KC_F14,  KC_WBAK,  KC_UP,  KC_WFWD,  TG(_AMONGUS),  _______,  KC_BTN1,  KC_MS_U,  KC_BTN2,    _______,  KC_DEL,
   ALTTAB, TABCYCLE,  KC_LEFT,  KC_DOWN,  KC_RIGHT,  KC_ENT , MEM,  KC_MS_L,  KC_MS_D,  KC_MS_R,    _______,  _______,
-  _______, _______, _______,  KC_LBRC,  KC_BSPC,  _______,  KC_VOLD,  KC_VOLU,  KC_RBRC,  _______,      _______,  _______,
+  _______, _______, _______,  KC_LBRC,  KC_BSPC,  _______,  _______,  _______,  KC_RBRC,  _______,      _______,  _______,
   _______, _______,  _______,  _______,  _______,  KC_F13,  _______,  _______,  _______,  _______,    _______,  KC_PWR
 ),
 
 [_UMLAUT] = LAYOUT_ortho_4x12(
   _______, _______,  _______,  _______,  _______,  _______,  _______,  TD(U_UMLAUT),  _______,  TD(O_UMLAUT),    _______,  _______,
   _______, TD(A_UMLAUT),  TD(S_UMLAUT),  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,
+  _______, _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,
+  _______, _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______
+),
+
+[_AUDIO] = LAYOUT_ortho_4x12(
+  _______, _______,  KC_VOLU,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,
+  _______, _______,  KC_VOLD,  KC_MEDIA_PREV_TRACK,  KC_MEDIA_NEXT_TRACK,  _______,  _______,  _______,  _______,  _______,    _______,  _______,
   _______, _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,
   _______, _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______
 ),
@@ -137,18 +146,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_RAISE] = LAYOUT_ortho_4x12(
   KC_F1,   KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,      KC_F7,      KC_F8,      KC_F9,      KC_F10,     KC_F11,     KC_F12,
-  _______,KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,         KC_0,RESET,
-  _______, _______, _______, KC_LBRC, KC_MINUS, KC_BSLASH, _______, KC_EQUAL, KC_RBRC, _______, KC_BSLS, _______,
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+  _______,KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,         KC_0,_______,
+  _______, RESET, _______, KC_LBRC, KC_MINUS, KC_BSLASH, _______, KC_EQUAL, KC_RBRC, _______, KC_BSLS, _______,
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_PWR
 ),
 
 
 
 [_ARROW] = LAYOUT_ortho_4x12(
-  _______, _______, _______, RGB_MOD, RGB_TOG, _______, _______, _______, _______, _______, _______, _______,
-  _______, UC_MOD, _______, RGB_HUI, RGB_VAI, _______, _______, _______, _______, NK_TOGG, _______, _______,
-  _______, NK_TOGG, _______, RGB_SPD, RGB_SAI, _______, TG(_UMLAUT), KC_MEDIA_PREV_TRACK, KC_UP, KC_MEDIA_NEXT_TRACK, TG(_GAME),_______,
-  _______, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT, _______,_______
+  _______, _______, _______, KC_F13, _______, RGB_MOD, RGB_TOG, _______, _______, NK_TOGG, UC_MOD, _______,
+  _______, _______, _______, _______, _______, RGB_HUI, RGB_VAI, _______, _______, _______, _______, _______,
+  MO(_LOWER), _______, _______, _______, _______, RGB_SPD, RGB_SAI, _______, KC_UP, _______, TG(_GAME),_______,
+  _______, _______, _______, _______, _______, _______, TG(_UMLAUT), KC_LEFT, KC_DOWN, KC_RIGHT, _______,_______
 ),
 
 
@@ -165,10 +174,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_GAME] = LAYOUT_ortho_4x12(
-    _______,KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,         KC_0,_______,
-KC_TAB,  KC_Q,       KC_W,       KC_E,       KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,    KC_O,    KC_P,    KC_BSPC,
-  KC_LSFT, KC_A,       KC_S,       KC_D,       KC_F,   KC_G,   KC_VOLD,   KC_VOLU,   KC_K,    KC_L,    _______, KC_QUOT,
-  KC_LCTL, KC_Z,       KC_X,       KC_C,       KC_V,   KC_SPC,   KC_N,   KC_M,   KC_COMM, KC_DOT,  TG(_GAME), _______
+    _______,KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    _______,    _______,    _______,         _______,_______,
+_______,  KC_Q,       KC_W,       KC_E,       KC_R,   KC_T,   _______,   _______,   _______,    _______,    _______,    _______,
+  _______, KC_A,       KC_S,       KC_D,       KC_F,   KC_G,   KC_VOLU,   _______,   _______,    _______,    _______, _______,
+  _______, KC_Z,       KC_X,       KC_C,       KC_V,   KC_SPC,   KC_VOLD,   _______,   _______, _______,  TG(_GAME), _______
 
 )
 
@@ -269,6 +278,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case MEM:
               if (record->event.pressed) {
+//rand ist nicht 100% random
+
+//bei lshift
+//int a=rand()%447+9728;
+
+//27BF-2600
+//10175-9728
+//dif=447
 
             }else{qk_ucis_start();
             }
