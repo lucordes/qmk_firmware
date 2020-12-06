@@ -21,8 +21,25 @@ enum keyboard_layers {
   // Function Layer
 };
 
+enum combos {
+  MAIL,
+CALC,
+  FOX,
+  LERN
+};
 
-enum custom_keycodes {
+const uint16_t PROGMEM fox[] = {KC_F, KC_O,KC_X, COMBO_END};
+const uint16_t PROGMEM mail[] = {KC_M, KC_A,KC_I,KC_L, COMBO_END};
+const uint16_t PROGMEM calc[] = {KC_C, KC_A,KC_L, COMBO_END};
+const uint16_t PROGMEM lern[] = {KC_L, KC_E,KC_R,KC_N, COMBO_END};
+
+    combo_t key_combos[COMBO_COUNT] = {
+    [FOX] = COMBO(fox, KC_F15),
+    [CALC] = COMBO(calc, KC_CALCULATOR),
+    [MAIL] = COMBO(mail, KC_MAIL),
+    [LERN] = COMBO(lern, KC_F16)
+    };
+    enum custom_keycodes {
 
     ALTTAB= SAFE_RANGE,
     TABCYCLE,
@@ -61,7 +78,7 @@ const qk_ucis_symbol_t ucis_symbol_table[] = UCIS_TABLE(
 
 );
 
-uint8_t cur_dance(qk_tap_dance_state_t *state);
+
 
 // For the x tap dance. Put it here so it can be used in any keymap2328
 
@@ -126,7 +143,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [_AUDIO] = LAYOUT_ortho_4x12(
-  _______, _______,  KC_VOLU,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,
+  _______, _______,  KC_VOLU,  KC_F15,  KC_F16,  _______,  _______,  _______,  _______,  _______,    _______,  _______,
   _______, _______,  KC_VOLD,  KC_MEDIA_PREV_TRACK,  KC_MEDIA_NEXT_TRACK,  _______,  _______,  _______,  _______,  _______,    _______,  _______,
   _______, _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,
   _______, _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______
@@ -154,8 +171,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 [_ARROW] = LAYOUT_ortho_4x12(
-  _______, _______, _______, KC_F13, _______, RGB_MOD, RGB_TOG, _______, _______, NK_TOGG, UC_MOD, _______,
-  _______, _______, _______, _______, _______, RGB_HUI, RGB_VAI, _______, _______, _______, _______, _______,
+  _______, _______, _______, KC_F13, _______, RGB_MOD, RGB_TOG, _______, KC_UP, NK_TOGG, UC_MOD, CMB_TOG,
+  _______, _______, _______, _______, _______, RGB_HUI, RGB_VAI, KC_LEFT, KC_DOWN, KC_RIGHT, _______, _______,
   MO(_LOWER), _______, _______, _______, _______, RGB_SPD, RGB_SAI, _______, KC_UP, _______, TG(_GAME),_______,
   _______, _______, _______, _______, _______, _______, TG(_UMLAUT), KC_LEFT, KC_DOWN, KC_RIGHT, _______,_______
 ),

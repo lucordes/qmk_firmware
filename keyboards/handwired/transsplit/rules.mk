@@ -33,5 +33,6 @@ TAP_DANCE_ENABLE = yes
 SLEEP_LED_ENABLE = no    # Breathing sleep LED during USB suspend
 UCIS_ENABLE = yes
 LAYOUTS = ortho_4x12
+COMBO_ENABLE = yes
 EXTRAFLAGS += -flto
 
