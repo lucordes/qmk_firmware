@@ -56,7 +56,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define USE_SERIAL
 
 //#define UNICODE_SONG_LNX  UNICODE_LINUX
-#define PERMISSIVE_HOLD
+//#define PERMISSIVE_HOLD
+#define TAPPING_TERM 175
+
 #define UNICODE_SELECTED_MODES UC_LNX, UC_WINC
 #define UCIS_MAX_CODE_POINTS 15
 
@@ -65,8 +67,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define NO_ACTION_MACRO
 #define NO_ACTION_FUNCTION
 
-#define COMBO_TERM 300
-#define COMBO_COUNT 4
 
  #ifndef NO_DEBUG
     #define NO_DEBUG
