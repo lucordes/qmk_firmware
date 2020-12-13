@@ -73,7 +73,7 @@ uint8_t cur_dance(qk_tap_dance_state_t *state);
 
 void esc_finished(qk_tap_dance_state_t *state, void *user_data);
 void esc_reset(qk_tap_dance_state_t *state, void *user_data);
-
+/*
 void a_finished(qk_tap_dance_state_t *state, void *user_data);
 void a_reset(qk_tap_dance_state_t *state, void *user_data);
 
@@ -117,7 +117,7 @@ const qk_ucis_symbol_t ucis_symbol_table[] = UCIS_TABLE(
 );
 
 
-
+*/
 // For the x tap dance. Put it here so it can be used in any keymap2328
 
 
@@ -176,7 +176,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_LOWER] = LAYOUT_ortho_4x12(
   RESET, KC_F14,  KC_WBAK,  KC_UP,  KC_WFWD,  TG(_AMONGUS),  _______,  KC_BTN1,  KC_MS_U,  KC_BTN2,    _______,  KC_DEL,
-  ALTTAB, TABCYCLE,  KC_LEFT,  KC_DOWN,  KC_RIGHT,  KC_ENT , MEM,  KC_MS_L,  KC_MS_D,  KC_MS_R,    _______,  _______,
+  ALTTAB, TABCYCLE,  KC_LEFT,  KC_DOWN,  KC_RIGHT,  KC_ENT , _______,  KC_MS_L,  KC_MS_D,  KC_MS_R,    _______,  _______,
   _______, _______, _______,  KC_LBRC,  KC_BSPC,  _______,  _______,  _______,  KC_RBRC,  _______,      _______,  _______,
   _______, _______,  _______,  _______,  _______,  KC_F13,  _______,  _______,  _______,  _______,    _______,  KC_PWR
 ),
@@ -189,7 +189,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [_AUDIO] = LAYOUT_ortho_4x12(
-  _______, _______,  KC_VOLU,  KC_F15,  KC_F16,  KC_WWW_SEARCH,  _______,  _______,  _______,  _______,    _______,  _______,
+  _______, _______,  KC_VOLU,  KC_F15,  KC_F16,  KC_WWW_SEARCH,  KC_F13,  _______,  _______,  _______,    _______,  _______,
   _______, _______,  KC_VOLD,  KC_MEDIA_PREV_TRACK,  KC_MEDIA_NEXT_TRACK,  _______,  _______,  _______,  _______,  _______,    _______,  _______,
   _______, _______,  _______,  KC_MEDIA_PLAY_PAUSE,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,
   _______, _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______
@@ -339,21 +339,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
 
             break;
-        case MEM:
-              if (record->event.pressed) {
-//rand ist nicht 100% random
-
-//bei lshift
-//int a=rand()%447+9728;
-
-//27BF-2600
-//10175-9728
-//dif=447
-
-            }else{qk_ucis_start();
-            }
-            break;
-
 
 
     }

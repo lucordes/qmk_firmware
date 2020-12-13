@@ -59,8 +59,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define PERMISSIVE_HOLD
 #define TAPPING_TERM 175
 
-#define UNICODE_SELECTED_MODES UC_LNX, UC_WINC
-#define UCIS_MAX_CODE_POINTS 15
+//#define UNICODE_SELECTED_MODES UC_LNX, UC_WINC
+//#define UCIS_MAX_CODE_POINTS 15
 
 /* Set 0 if debouncing isn't needed */
 #define DEBOUNCE 5

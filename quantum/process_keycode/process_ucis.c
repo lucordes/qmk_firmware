@@ -72,7 +72,7 @@ bool process_ucis(uint16_t keycode, keyrecord_t *record) {
         return true;
     }
 
-    bool special = keycode == KC_SPC || keycode == KC_ENT || keycode == KC_ESC || keycode == KC_BSPC||keycode==KC_LSHIFT;
+    bool special = keycode == KC_SPC || keycode == KC_ENT || keycode == KC_ESC || keycode == KC_BSPC;
     if (qk_ucis_state.count >= UCIS_MAX_SYMBOL_LENGTH && !special) {
         return false;
     }
@@ -122,52 +122,6 @@ bool process_ucis(uint16_t keycode, keyrecord_t *record) {
 
             qk_ucis_state.in_progress = false;
             return false;
-break;
-
-            case KC_LSHIFT:
-            for (uint8_t i = 0; i < qk_ucis_state.count; i++) {
-                register_code(KC_BSPC);
-                unregister_code(KC_BSPC);
-                wait_ms(UNICODE_TYPE_DELAY);
-            }
-
-            if (keycode == KC_ESC) {
-                qk_ucis_state.in_progress = false;
-                qk_ucis_cancel();
-                return false;
-            }
-
-          //  uint8_t i;
-          //  bool    symbol_found = false;
-            for (i = 0; ucis_symbol_table[i].symbol; i++) {
-                if (1) {
-                    symbol_found = true;
-//rand ist nicht 100% random
-
-                    int a=rand()%447+9728;
-
-//27BF-2600
-//10175-9728
-//dif=447
-
-                        unicode_input_start();
-                        register_hex(a);  // ⌨
-                        //register_hex(0x1F6B3);  // ⌨
-                        unicode_input_finish();
-
-                    //register_ucis(ucis_symbol_table[i].code_points);
-                    break;
-                }
-            }
-            if (symbol_found) {
-                qk_ucis_success(i);
-            } else {
-                qk_ucis_symbol_fallback();
-            }
-
-            qk_ucis_state.in_progress = false;
-            return false;
-
 
         default:
             return true;
