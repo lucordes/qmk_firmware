@@ -8,10 +8,9 @@ extern keymap_config_t keymap_config;
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
 
-
 enum keyboard_layers {
   _QWERTY = 0, // Base Layer
-  //_HOMEROW,
+  _HOMEROW,
   _AMONGUS,
   _UMLAUT,
   _LOWER,
@@ -56,7 +55,7 @@ enum {
     O_UMLAUT,
     ESC_GRAVE,
 
-    /*
+
     A,
     S,
     D,
@@ -65,7 +64,7 @@ enum {
     K,
     L,
     SEMIC,
-*/
+
 };
 
 
@@ -73,7 +72,7 @@ uint8_t cur_dance(qk_tap_dance_state_t *state);
 
 void esc_finished(qk_tap_dance_state_t *state, void *user_data);
 void esc_reset(qk_tap_dance_state_t *state, void *user_data);
-/*
+
 void a_finished(qk_tap_dance_state_t *state, void *user_data);
 void a_reset(qk_tap_dance_state_t *state, void *user_data);
 
@@ -146,14 +145,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LCTL, KC_LGUI,    KC_RALT,    KC_LALT,    MO(_LOWER),  LT(_AUDIO, KC_SPC), KC_SPC, MO(_RAISE),  KC_RCTL, KC_RGUI, MO(_ARROW), KC_RCTL
 ),
 
-/*
+
 [_HOMEROW] = LAYOUT_ortho_4x12(
   _______, _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,
   _______, TD(A),  TD(S),  TD(D),  TD(F),  _______,  _______,  TD(J),  TD(K),  TD(L),    TD(SEMIC),  _______,
   _______, _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,
   _______, _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______
 ),
-*/
+
 
 [_AMONGUS] = LAYOUT_ortho_4x12(
   _______, _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,
@@ -182,8 +181,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [_UMLAUT] = LAYOUT_ortho_4x12(
-  _______, _______,  _______,  _______,  _______,  _______,  _______,  TD(U_UMLAUT),  _______,  TD(O_UMLAUT),    _______,  _______,
-  _______, TD(A_UMLAUT),  TD(S_UMLAUT),  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,
+  _______, TD(A_UMLAUT),  _______,  TD(S_UMLAUT),  _______,  _______,  _______,  TD(U_UMLAUT),  _______,  TD(O_UMLAUT),    _______,  _______,
+  _______, _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,
   _______, _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,
   _______, _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______
 ),
@@ -218,7 +217,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_ARROW] = LAYOUT_ortho_4x12(
   _______, _______, _______, KC_F13, _______, RGB_MOD, RGB_TOG, _______, KC_UP, NK_TOGG, UC_MOD, CMB_TOG,
-  _______, _______, _______, _______, _______, RGB_HUI, RGB_VAI, KC_LEFT, KC_DOWN, KC_RIGHT, _______, _______,
+  _______, _______, _______, _______, _______, RGB_HUI, RGB_VAI, KC_LEFT, KC_DOWN, KC_RIGHT, TG(_HOMEROW), _______,
   MO(_LOWER), _______, _______, _______, _______, RGB_SPD, RGB_SAI, _______, KC_UP, _______, TG(_GAME),_______,
   _______, _______, _______, _______, _______, _______, TG(_UMLAUT), KC_LEFT, KC_DOWN, KC_RIGHT, _______,_______
 ),
@@ -362,7 +361,7 @@ void DanceS(qk_tap_dance_state_t *state, void *user_data) {
       if (state->count == 1) {
 
         if (state->interrupted || !state->pressed) //singel tapreturn SINGLE_TAP;
-            SEND_STRING("s");
+            SEND_STRING("e");
 
         else{
 
@@ -375,7 +374,7 @@ void DanceS(qk_tap_dance_state_t *state, void *user_data) {
     }
 
     if (state->count > 1){
-    SEND_STRING("ss");
+    SEND_STRING("ee");
        //return DOUBLE_SINGLE_TAP;
     }
         reset_tap_dance(state);
@@ -437,7 +436,7 @@ void DanceA(qk_tap_dance_state_t *state, void *user_data) {
         if (state->count == 1) {
 
             if (state->interrupted || !state->pressed) //singel tapreturn SINGLE_TAP;
-                SEND_STRING("a");
+                SEND_STRING("q");
 
             else{
 
@@ -450,7 +449,7 @@ void DanceA(qk_tap_dance_state_t *state, void *user_data) {
         }
 
     if (state->count > 1){
-    SEND_STRING("aa");
+    SEND_STRING("qq");
         //return DOUBLE_SINGLE_TAP;
     }
 
@@ -523,7 +522,7 @@ void esc_reset(qk_tap_dance_state_t *state, void *user_data) {
     esctap_state.state = 0;
 }
 
-/*
+
 
 //====================================================================================
 
@@ -805,14 +804,14 @@ void semic_reset(qk_tap_dance_state_t *state, void *user_data) {
 }
 
 //====================================================================================semic
-*/
+
 qk_tap_dance_action_t tap_dance_actions[] = {
     [A_UMLAUT]=ACTION_TAP_DANCE_FN(DanceA),
     [U_UMLAUT]=ACTION_TAP_DANCE_FN(DanceU),
     [O_UMLAUT]=ACTION_TAP_DANCE_FN(DanceO),
     [S_UMLAUT]=ACTION_TAP_DANCE_FN(DanceS),
 
-    /*
+
      [A]=ACTION_TAP_DANCE_FN_ADVANCED(NULL, a_finished, a_reset),
     [S]=ACTION_TAP_DANCE_FN_ADVANCED(NULL, s_finished, s_reset),
     [D]=ACTION_TAP_DANCE_FN_ADVANCED(NULL, d_finished, d_reset),
@@ -822,7 +821,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [L]=ACTION_TAP_DANCE_FN_ADVANCED(NULL, l_finished, l_reset),
     [SEMIC]=ACTION_TAP_DANCE_FN_ADVANCED(NULL, semic_finished, semic_reset),
 
-    */
+
 
 
 
