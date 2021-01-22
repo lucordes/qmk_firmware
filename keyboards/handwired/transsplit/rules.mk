@@ -1,5 +1,6 @@
 # MCU name
 MCU = atmega32u4
+#STM32_BOOTLOADER_ADDRESS = 0x1FFF0000
 
 # Bootloader selection
 #   Teensy       halfkay
